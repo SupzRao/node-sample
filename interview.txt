@@ -1,0 +1,65 @@
+What is Node.js ?
+    Node.js is a virtual machine that uses JavaScript as its scripting language and runs Chrome’s V8 JavaScript engine.
+How do you manage packages in your node.js ?
+    To maintain versions of libs being installed in a project we use package.json and package-lock.json so that there is no issue in porting that app to a different environment.
+How is Node.js better than other frameworks ?
+    Node.js provides simplicity in
+     development because of its non-blocking I/O and even-based model results in short response time and concurrent processing, unlike other frameworks where developers have to use thread management. 
+    It runs on a chrome v8 engine which is written in c++ and is highly performant with constant improvement. 
+    Also since we will use Javascript in both the frontend and backend the development will be much faster. 
+    And at last, there are ample libraries so that we don’t need to reinvent the wheel
+What are some commonly used timing features of Node.js?
+    setTimeout/clearTimeout – This is used to implement delays in code execution.
+    setInterval/clearInterval – This is used to run a code block multiple times.
+    setImmediate/clearImmediate – Any function passed as the setImmediate() argument is a callback that's executed in the next iteration of the event loop.
+    process.nextTick – Both setImmediate and process.nextTick appear to be doing the same thing; however, you may prefer one over the other depending on your callback’s urgency. 
+What are the advantages of using promises instead of callbacks?
+    The main advantage of using promise is you get an object to decide the action that needs to be taken after the async task completes. 
+    This gives more manageable code and avoids callback hell.
+Why is Node.js single-threaded?
+    Node.js was created explicitly as an experiment in async processing.
+    This was to try a new theory of doing async processing on a single thread over the existing thread-based implementation of scaling via different frameworks.
+How many types of API functions are there in Node.js?
+    There are two types of API functions:
+    Asynchronous, non-blocking functions - mostly I/O operations which can be fork out of the main loop. 
+    Synchronous, blocking functions - mostly operations that influence the process running in the main loop.
+What is the purpose of module.exports?
+    This is used to expose functions of a particular module or file to be used elsewhere in the project.
+    This can be used to encapsulate all similar functions in a file which further improves the project structure.
+What is an event-loop in Node JS?
+    Whatever that is async is managed by event-loop using a queue and listener.
+Differentiate between process.nextTick() and setImmediate()?
+    Both can be used to switch to an asynchronous mode of operation by listener functions. 
+    process.nextTick() sets the callback to execute but setImmediate pushes the callback in the queue to be executed.
+    timers–>pending callbacks–>idle,prepare–>connections(poll,data,etc)–>check–>close callbacks
+In this process.nextTick() method adds the callback function to the start of the next event queue.
+setImmediate() method to place the function in the check phase of the next event queue.
+How does Node.js overcome the problem of blocking of I/O operations?
+    Since the node has an event loop that can be used to handle all the I/O operations in an asynchronous manner without blocking the main function. 
+    So for example, if some network call needs to happen it will be scheduled in the event loop instead of the main thread(single thread). 
+    And if there are multiple such I/O calls each one will be queued accordingly to be executed separately(other than the main thread). 
+What is node.js streams?
+    Streams are instances of EventEmitter which can be used to work with streaming data in Node.js. They can be used for handling and manipulating streaming large files(videos, mp3, etc) over the network. They use buffers as their temporary storage.
+    There are mainly four types of the stream:
+    Writable: streams to which data can be written (for example, fs.createWriteStream()).
+    Readable: streams from which data can be read (for example, fs.createReadStream()).
+    Duplex: streams that are both Readable and Writable (for example, net.Socket).
+    Transform: Duplex streams that can modify or transform the data as it is written and read (for example, zlib.createDeflate()).
+What are node.js buffers?
+    In general, buffers is a temporary memory that is mainly used by stream to hold on to some data until consumed. 
+What is middleware?
+    Middleware comes in between your request and business logic. 
+    It is mainly used to capture logs and enable rate limit, routing, authentication, basically whatever that is not a part of business logic. 
+    There are third-party middleware also such as body-parser and you can write your own middleware for a specific use case.
+Explain what a Reactor Pattern in Node.js?
+    Reactor pattern again a pattern for nonblocking I/O operations. But in general, this is used in any event-driven architecture. 
+    There are two components in this: 1. Reactor 2. Handler.
+    Reactor: Its job is to dispatch the I/O event to appropriate handlers
+    Handler: Its job is to actually work on those events.
+Why should you separate Express app and server?
+    The server is responsible for initializing the routes, middleware, and other application logic whereas the app has all the business logic which will be served by the routes initiated by the server. 
+    This ensures that the business logic is encapsulated and decoupled from the application logic which makes the project more readable and maintainable.
+What is an Event Emitter in Node.js?
+    EventEmitter is a Node.js class that includes all the objects that are basically capable of emitting events. 
+    This can be done by attaching named events that are emitted by the object using an eventEmitter.on() function. 
+    Thus whenever this object throws an even the attached functions are invoked synchronously.

@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <h1> Welcome to contact screen!!</h1>
+</head>
+<body>
+    <%- include('partials/nav'); -%>
+
+    <h1> Hai this is contact profile</h1>
+    <p><%= name%> </p>
+    <p><%= hobbies%> </p>
+    <ul>
+        <% hobbies.forEach(function(item){%>
+        <li><%= item%></li>
+        <%});%>
+    </ul>
+    <h2>This is where you can see the details</h2>
+</body>
+</html>
